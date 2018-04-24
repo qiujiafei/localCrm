@@ -1,0 +1,13 @@
+{
+  "ecmaVersion": 7,
+  "libs": [
+    "browser"
+  ],
+  "loadEagerly": [
+    "./src/**/*.jsx"
+  ],
+  "dontLoad": [
+    "./node_modules/**"
+  ],
+  "plugins": {}
+}

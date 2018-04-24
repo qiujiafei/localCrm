@@ -1,0 +1,63 @@
+.crm-dropdown-table
+  position relative
+  background-color #fff
+
+  & > .btns
+    position absolute
+    top 0
+    right 0
+    height 100%
+
+    & .fa
+      margin-top 7px
+      margin-right 5px
+      font-size 20px
+      color #969696
+      cursor pointer
+
+      &:hover
+        color #333
+
+  & > .table
+    position fixed
+    z-index 1
+    display none
+    border 1px solid #ddd
+    background-color #fff
+
+    .rt-tr
+      cursor pointer
+
+    .crm-indicator
+      position absolute !important
+
+    .crm-table-cell
+      overflow hidden !important
+
+
+    & > footer
+      position relative
+      text-align left
+      padding 0 10px
+      border-top 1px solid #ddd
+
+      & > span
+        position absolute
+        top 50%
+        right 10px
+        margin-top -7px
+
+      .crm-pagination
+        display inline-block
+        width auto
+        margin-right 5px
+        cursor pointer
+        vertical-align middle
+
+    &.show
+      display block
+
+  & > input
+    padding-left 10px !important
+    padding-right 45px !important
+    height 100%

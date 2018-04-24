@@ -1,0 +1,70 @@
+item-width = 32px
+item-height = 32px
+
+item-active-background-color = #26b99a
+item-active-color = #fff
+item-active-border-color = #169f85
+
+item-background-color = #fff
+item-color = #5a738e
+item-border-color = #e3e4e5
+
+icon(url)
+  background-repeat no-repeat
+  background-position center
+  background-image embedurl(url)
+
+.crm-pagination
+  font-family microsoft yahei
+  text-align right
+
+  .rc-pagination
+    display inline-block
+    & .rc-pagination-jump-next
+    & .rc-pagination-jump-prev
+    & .rc-pagination-prev
+    & .rc-pagination-next
+    & .rc-pagination-item
+      width item-width
+      height item-height
+      line-height item-height
+      border-radius 0
+
+    & .rc-pagination-prev
+      & > .rc-pagination-item-link
+        display block
+        width 100%
+        height 100%
+        icon('./prev.png')
+        &::after
+          content none
+
+    & .rc-pagination-next
+      & > .rc-pagination-item-link
+        display block
+        width 100%
+        height 100%
+        icon('./next.png')
+        &::after
+          content none
+
+    & .rc-pagination-jump-prev
+    & .rc-pagination-jump-next
+      &:hover::after
+        color item-active-background-color
+
+    & .rc-pagination-item
+      border-color item-border-color
+      background-color item-background-color
+      & > a
+        font-size 14px
+        color item-color
+      &:hover
+      &.rc-pagination-item-active
+        border-color item-active-border-color
+        background-color item-active-background-color
+        & > a
+          color item-active-color
+
+  *
+    outline none

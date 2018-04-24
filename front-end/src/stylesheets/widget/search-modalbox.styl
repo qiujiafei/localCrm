@@ -1,0 +1,45 @@
+.crm-search-modalbox
+  position fixed
+  top 0
+  left 0
+  display table
+  z-index 13
+  width 100%
+  height 100%
+  background-color rgba(0,0,0,.5)
+
+  & > .inner
+    display table-cell
+    vertical-align middle
+
+    & > .box
+      position relative
+      margin 0 auto
+      background-color #fff
+
+      & > .crm-table
+        margin 10px
+
+      & > .crm-indicator
+        position absolute
+
+      & > footer
+        padding 0 10px
+
+      & > header
+        position relative
+        height 50px
+        line-height 50px
+        background-color #eee
+
+        & > span
+          padding-left 10px
+
+        & > .crm-icon-close
+          position absolute
+          top 50%
+          right 10px
+          width 16px
+          height 16px
+          margin-top -8px
+          cursor pointer

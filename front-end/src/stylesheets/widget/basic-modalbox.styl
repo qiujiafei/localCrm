@@ -1,0 +1,126 @@
+/*
+ * CRM 模态框样式
+ * CreatedBy: tanglj
+ */
+.crm-basic-modalbox
+  box-width = 500px
+  box-height = 300px
+  box-header-height = 50px
+
+  position fixed
+  top 0
+  left 0
+  z-index 9999
+  display table
+  width 100%
+  height 100%
+  background-color rgba(0,0,0,.5)
+
+  & > .inner
+    display table-cell
+    vertical-align middle
+
+    & > .box
+      position relative
+      width box-width
+      height box-height
+      margin 0 auto
+      background-color #fff
+
+      & > .indicator-wrapper
+        position absolute
+        top 0
+        left 0
+        z-index 1
+        width 100%
+        height 100%
+        background-color rgba(255,255,255,.5)
+
+        & .indicator
+          position absolute
+          top 50%
+          left 50%
+          margin-top -20px
+          margin-left -20px
+        & .indicator-primarycolor
+          color #26b99a
+
+      & > .box-body
+        table
+          width 90%
+          margin 0 auto
+          border-collapse collapse
+
+        td
+          margin 0
+          padding 0
+          border 1px solid #ddd
+          font-size 13px
+
+          &:nth-of-type(2n + 1)
+            background-color #fafafa
+            text-align center
+
+          & > label
+            display block
+            padding 10px 0
+
+          & .crm-input
+            padding 0
+            border none
+
+          & > div
+            padding 10px 5px
+
+            & > input
+            & > textarea
+              width 100%
+              padding 0
+              border none
+              resize none
+              outline none
+              box-shadow: none
+              vertical-align top
+
+          &.for-dropdown
+            & > div
+              padding 0
+
+              & > .crm-dpl
+                border none
+
+                & > .value
+                  padding-top 10px
+                  padding-bottom 10px
+
+      & > footer
+        position absolute
+        bottom 0
+        width 100%
+        text-align center
+
+        button
+          margin-right 10px
+          margin-bottom 20px
+          margin-left 10px
+
+      & > header
+        position relative
+        height box-header-height
+        line-height box-header-height
+        margin-bottom 30px
+        background-color #ddd
+
+        & > span
+          padding-left 15px
+
+        & > button
+          position absolute
+          top 18px
+          right 15px
+          display block
+          width 14px
+          height 14px
+          border none
+          cursor pointer
+          outline none

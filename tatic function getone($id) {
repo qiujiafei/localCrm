@@ -1,0 +1,474 @@
+[1mdiff --git a/commodity/modules/member/models/cardtemplate/get/select.php b/commodity/modules/member/models/cardtemplate/get/select.php[m
+[1mindex 5635ae8..7dc050c 100644[m
+[1m--- a/commodity/modules/member/models/cardtemplate/get/select.php[m
+[1m+++ b/commodity/modules/member/models/cardtemplate/get/select.php[m
+[36m@@ -2,7 +2,7 @@[m
+ /**[m
+  * CRM system for 9daye[m
+  *[m
+[31m- * @author: qzh <qianchaohui@9daye.com.cn>[m
+[32m+[m[32m * @author: zhuangzhuang <qiujiafei@9daye.com.cn>[m
+  */[m
+ [m
+ namespace commodity\modules\member\models\cardtemplate\get;[m
+[36m@@ -14,10 +14,7 @@[m [mclass Select {[m
+     const DEFAULT_COUNT_PER_PAGE = 10;[m
+     const DEFAULT_PAGE_NUM = 1;[m
+ [m
+[31m-    public static function getone($id) {[m
+[31m-        //todo[m
+[31m-        return [];[m
+[31m-    }[m
+[32m+[m
+ [m
+     public static function getall($condition) {[m
+         //todo[m
+[1mdiff --git a/commodity/modules/member/models/registerMember/put/Insert.php b/commodity/modules/member/models/registerMember/put/Insert.php[m
+[1mdeleted file mode 100644[m
+[1mindex 741437f..0000000[m
+[1m--- a/commodity/modules/member/models/registerMember/put/Insert.php[m
+[1m+++ /dev/null[m
+[36m@@ -1,200 +0,0 @@[m
+[31m-<?php[m
+[31m-[m
+[31m-/*  * [m
+[31m- * CRM system for 9daye[m
+[31m- * [m
+[31m- * @author Vett <niulechuan@9daye.com.cn>[m
+[31m- */[m
+[31m-[m
+[31m-namespace commodity\modules\commodityManage\models\put\db;[m
+[31m-[m
+[31m-use common\ActiveRecord\CommodityAR;[m
+[31m-use common\ActiveRecord\CommodityImageAR;[m
+[31m-use commodity\components\tokenAuthentication\AccessTokenAuthentication;[m
+[31m-use commodity\modules\commodityManage\models\get\db\GetClassificationIdByName;[m
+[31m-use commodity\modules\commodityManage\models\get\db\GetUnitIdByName;[m
+[31m-use commodity\modules\commodityManage\models\judgment\HasSameCommodity as Judgment;[m
+[31m-use Yii;[m
+[31m-[m
+[31m-class Insert extends CommodityAR[m
+[31m-{[m
+[31m-    const IMAGE_COUNT_LIMIT = 5;[m
+[31m-    [m
+[31m-    public static $commodityKeys = [[m
+[31m-        'commodity_name' => '',[m
+[31m-        'specification' => '',[m
+[31m-        'commodity_code' => '',[m
+[31m-        'classification_id' => '',[m
+[31m-        'classification_name' => '',[m
+[31m-        'price' => '',[m
+[31m-        'barcode' => '',[m
+[31m-        'unit_name' => '',[m
+[31m-        'commodity_property_name' => 1,[m
+[31m-        'status' => 1,[m
+[31m-        'comment' => '',[m
+[31m-        'store_id' => '',[m
+[31m-        'commodity_originate_id' => 1,[m
+[31m-        'created_by' => '',[m
+[31m-        'created_time' => '',[m
+[31m-        'barcode' => '',[m
+[31m-        'default_depot_id' => '',[m
+[31m-        'commodity_name' => '',[m
+[31m-        'last_modified_by' => '',[m
+[31m-        'last_modified_time' => '',[m
+[31m-        'images' => [],[m
+[31m-    ];[m
+[31m-    [m
+[31m-    public static $imageKeys = [[m
+[31m-        'commodity_name' => '',[m
+[31m-        'barcode' => '',[m
+[31m-        'store_id' => '',[m
+[31m-        'image_url' => '',[m
+[31m-        'image_name' => '',[m
+[31m-        'last_modified_by' => '',[m
+[31m-        'last_modified_time' => '',[m
+[31m-        'created_by' => '',[m
+[31m-        'created_time' => '',[m
+[31m-        'status' => 1,[m
+[31m-    ];[m
+[31m-    [m
+[31m-    public static $propertyKeys = [[m
+[31m-        'property_name' => '',[m
+[31m-        'store_id' => '',[m
+[31m-        'status' => 1,[m
+[31m-        'created_by' => '',[m
+[31m-        'created_time' => '',[m
+[31m-    ];[m
+[31m-    [m
+[31m-    /**[m
+[31m-     * Insert data into DB.[m
+[31m-     * [m
+[31m-     * format:[m
+[31m-     * [m
+[31m-     * $data  = [[m
+[31m-     *   'barcode' => '',[m
+[31m-     *   'commodity_id' => '',[m
+[31m-     *   'commodity_name' => '',[m
+[31m-     *   'specification' => '',[m
+[31m-     *   'price' => '',[m
+[31m-     *   'classification_name' => '',[m
+[31m-     *   'unit_name' => '',[m
+[31m-     *   'comment' => '',[m
+[31m-     *   'images' => [[m
+[31m-     *      ['image_name' => ''],[m
+[31m-     *      ['image_name' => ''],[m
+[31m-     *   ],[m
+[31m-     * ];[m
+[31m-     * [m
+[31m-     */[m
+[31m-    public static function insertCommodity(array $data)[m
+[31m-    {[m
+[31m-        if((new Judgment($data))()) {[m
+[31m-            throw new \Exception("", 23000);[m
+[31m-        }[m
+[31m-        try {[m
+[31m-            $data = self::prepareData($data);[m
+[31m-        } catch(\Exception $ex) {[m
+[31m-            throw $ex;[m
+[31m-        }[m
+[31m-[m
+[31m-        $images = $data['images'];[m
+[31m-        [m
+[31m-        if(count($images) > self::IMAGE_COUNT_LIMIT) {[m
+[31m-            throw new \Exception(sprintf([m
+[31m-                'Images should less than %s. In %s.', self::IMAGE_COUNT_LIMIT, __METHOD__[m
+[31m-            ), 2003);[m
+[31m-        }[m
+[31m-        [m
+[31m-        unset($data['images']);[m
+[31m-        [m
+[31m-        $transaction = Yii::$app->db->beginTransaction();[m
+[31m-[m
+[31m-        try {[m
+[31m-            $commodityInsert = new self;[m
+[31m-[m
+[31m-            foreach($data as $k => $v) {[m
+[31m-                $commodityInsert->$k = $v;[m
+[31m-            }[m
+[31m-            [m
+[31m-            $commodityInsert->save(false);[m
+[31m-        [m
+[31m-            self::insertCommodityImages($images);[m
+[31m-            [m
+[31m-            $transaction->commit();[m
+[31m-        } catch (\Exception $ex) {[m
+[31m-            $transaction->rollback();[m
+[31m-            throw $ex;[m
+[31m-        }[m
+[31m-        [m
+[31m-        return self::$commodityKeys;[m
+[31m-    }[m
+[31m-   [m
+[31m-    public static function insertCommodityImages(array $images)[m
+[31m-    {[m
+[31m-        $commodityImage = new CommodityImageAR();[m
+[31m-[m
+[31m-        $sql = $commodityImage[m
+[31m-                ->getDb()[m
+[31m-                ->queryBuilder[m
+[31m-                ->batchInsert([m
+[31m-                        $commodityImage->getTableSchema()->fullName,[m
+[31m-                        array_keys(self::$imageKeys),[m
+[31m-                        $images[m
+[31m-                );[m
+[31m-[m
+[31m-        return $commodityImage->getDb()->createCommand($sql)->execute();[m
+[31m-    }[m
+[31m-    [m
+[31m-    public static function prepareData(array $data)[m
+[31m-    {[m
+[31m-        //判断user是否存在[m
+[31m-        if(!$userIdentity = AccessTokenAuthentication::getUser()) {[m
+[31m-            throw new \Exception(sprintf([m
+[31m-                "Can not found user identity in %s.", __METHOD__[m
+[31m-            ));[m
+[31m-        }[m
+[31m-        [m
+[31m-        //过滤commodity无效参数[m
+[31m-        foreach(self::$commodityKeys as $key => $value) {[m
+[31m-            self::$commodityKeys[$key] = $data[$key] ?? $value;[m
+[31m-        }[m
+[31m-        [m
+[31m-        //生成image参数[m
+[31m-        if(!empty(self::$commodityKeys['images'])) {[m
+[31m-            foreach(self::$commodityKeys['images'] as $key => $image) {[m
+[31m-                unset(self::$commodityKeys['images'][$key]);[m
+[31m-                self::$commodityKeys['images'][$key]['commodity_name']      = self::$commodityKeys['commodity_name'] ?? '';[m
+[31m-                self::$commodityKeys['images'][$key]['barcode']             = self::$commodityKeys['barcode'] ?? '';[m
+[31m-                self::$commodityKeys['images'][$key]['store_id']            = $userIdentity['store_id'];[m
+[31m-                self::$commodityKeys['images'][$key]['image_url']           = Yii::$app->params['OSS_PostHost'];[m
+[31m-                self::$commodityKeys['images'][$key]['image_name']          = $image;[m
+[31m-                self::$commodityKeys['images'][$key]['last_modified_by']    = $userIdentity['id'];[m
+[31m-                self::$commodityKeys['images'][$key]['last_modified_time']  = date('Y-m-d H:i:s');[m
+[31m-                self::$commodityKeys['images'][$key]['created_by']          = $userIdentity['id'];[m
+[31m-                self::$commodityKeys['images'][$key]['created_time']        = date('Y-m-d H:i:s');[m
+[31m-                self::$commodityKeys['images'][$key]['status']              = 1;[m
+[31m-            }[m
+[31m-        }[m
+[31m-        [m
+[31m-        //添加固定参数[m
+[31m-        try {[m
+[31m-            self::$commodityKeys['classification_id']   = (new GetClassificationIdByName)(self::$commodityKeys['classification_name']);[m
+[31m-            self::$commodityKeys['unit_id']   = (new GetUnitIdByName)(self::$commodityKeys['unit_name']);[m
+[31m-        } catch(\Exception $ex) {[m
+[31m-            throw $ex;[m
+[31m-        }[m
+[31m-        self::$commodityKeys['created_by']          = $userIdentity['id'];[m
+[31m-        self::$commodityKeys['store_id']            = $userIdentity['store_id'];[m
+[31m-        self::$commodityKeys['last_modified_by']    = $userIdentity['id'];[m
+[31m-        self::$commodityKeys['last_modified_time']  = date('Y-m-d H:i:s');[m
+[31m-        self::$commodityKeys['created_time']        = date('Y-m-d H:i:s');[m
+[31m-        self::$commodityKeys['price']               = round(self::$commodityKeys['price'], 2);[m
+[31m-[m
+[31m-        return self::$commodityKeys;[m
+[31m-    }[m
+[31m-    [m
+[31m-    public static function getUser()[m
+[31m-    {[m
+[31m-        return Yii::$app->user->getIdentity()::$user ?? null;[m
+[31m-    }[m
+[31m-}[m
+[1mdiff --git a/commodity/modules/member/models/registermember/CardTemplateModel.php b/commodity/modules/member/models/registermember/CardTemplateModel.php[m
+[1mdeleted file mode 100644[m
+[1mindex e361c57..0000000[m
+[1m--- a/commodity/modules/member/models/registermember/CardTemplateModel.php[m
+[1m+++ /dev/null[m
+[36m@@ -1,77 +0,0 @@[m
+[31m-<?php[m
+[31m-/**[m
+[31m- * CRM system for 9daye[m
+[31m- *[m
+[31m- * @author: qzh <qianchaohui@9daye.com.cn>[m
+[31m- */[m
+[31m-[m
+[31m-namespace commodity\modules\member\models\cardtemplate;[m
+[31m-[m
+[31m-use common\models\Model as CommonModel;[m
+[31m-use commodity\modules\member\models\cardtemplate\get\Select;[m
+[31m-use Yii;[m
+[31m-[m
+[31m-class CardTemplateModel extends CommonModel {[m
+[31m-[m
+[31m-    const ACTION_GET_ONE = 'action_getone';[m
+[31m-    const ACTION_GET_ALL = 'action_getall';[m
+[31m-[m
+[31m-    public $token;[m
+[31m-    public $count_per_page;[m
+[31m-    public $page_num;[m
+[31m-    public $id;[m
+[31m-    public $keyword;[m
+[31m-    public $store_id;[m
+[31m-    public $status;[m
+[31m-[m
+[31m-    public function scenarios() {[m
+[31m-        return [[m
+[31m-            self::ACTION_GET_ONE => ['id', 'token'],[m
+[31m-            self::ACTION_GET_ALL => ['token', 'keyword','status'],[m
+[31m-        ];[m
+[31m-    }[m
+[31m-[m
+[31m-    public function rules() {[m
+[31m-        return [[m
+[31m-            [[m
+[31m-                ['id', 'token'],[m
+[31m-                'required',[m
+[31m-                'message' => 2004,[m
+[31m-            ],[m
+[31m-            [[m
+[31m-                ['count_per_page', 'page_num'],[m
+[31m-                'integer',[m
+[31m-                'min' => 1,[m
+[31m-                'tooSmall' => 2004,[m
+[31m-                'message' => 2004,[m
+[31m-            ],[m
+[31m-            ['status', 'default', 'value' => 1],[m
+[31m-        ];[m
+[31m-    }[m
+[31m-[m
+[31m-    public function actionGetone() {[m
+[31m-        try {[m
+[31m-            $result = Select::getone($this->id);[m
+[31m-            if (!$result) {[m
+[31m-                throw new \Exception('无法获取-1', 2005);[m
+[31m-            }[m
+[31m-            return $result;[m
+[31m-        } catch (\Exception $ex) {[m
+[31m-            $this->addError('get-one', 2005);[m
+[31m-            return false;[m
+[31m-        }[m
+[31m-    }[m
+[31m-[m
+[31m-    public function actionGetall() {[m
+[31m-        try {[m
+[31m-            $condition = [];[m
+[31m-            $result = Select::getall($condition);[m
+[31m-        } catch (\Exception $ex) {[m
+[31m-            $this->addError('get-all', 2005);[m
+[31m-            return false;[m
+[31m-        }[m
+[31m-[m
+[31m-        return [];[m
+[31m-    }[m
+[31m-[m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/commodity/modules/member/models/registermember/get/select.php b/commodity/modules/member/models/registermember/get/select.php[m
+[1mdeleted file mode 100644[m
+[1mindex 5635ae8..0000000[m
+[1m--- a/commodity/modules/member/models/registermember/get/select.php[m
+[1m+++ /dev/null[m
+[36m@@ -1,27 +0,0 @@[m
+[31m-<?php[m
+[31m-/**[m
+[31m- * CRM system for 9daye[m
+[31m- *[m
+[31m- * @author: qzh <qianchaohui@9daye.com.cn>[m
+[31m- */[m
+[31m-[m
+[31m-namespace commodity\modules\member\models\cardtemplate\get;[m
+[31m-[m
+[31m-use Yii;[m
+[31m-[m
+[31m-class Select {[m
+[31m-[m
+[31m-    const DEFAULT_COUNT_PER_PAGE = 10;[m
+[31m-    const DEFAULT_PAGE_NUM = 1;[m
+[31m-[m
+[31m-    public static function getone($id) {[m
+[31m-        //todo[m
+[31m-        return [];[m
+[31m-    }[m
+[31m-[m
+[31m-    public static function getall($condition) {[m
+[31m-        //todo[m
+[31m-        return [];[m
+[31m-    }[m
+[31m-[m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/commodity/modules/registerMember/controllers/CardTemplateController.php b/commodity/modules/registerMember/controllers/CardTemplateController.php[m
+[1mdeleted file mode 100644[m
+[1mindex 3281722..0000000[m
+[1m--- a/commodity/modules/registerMember/controllers/CardTemplateController.php[m
+[1m+++ /dev/null[m
+[36m@@ -1,34 +0,0 @@[m
+[31m-<?php[m
+[31m-/**[m
+[31m- * CRM system for 9daye[m
+[31m- *[m
+[31m- * @author: qch <qianchaohui@9daye.com.cn>[m
+[31m- */[m
+[31m-namespace commodity\modules\member\controllers;[m
+[31m-[m
+[31m-use Yii;[m
+[31m-use common\controllers\Controller as CommonController;[m
+[31m-use commodity\modules\member\models\cardtemplate\CardTemplateModel;[m
+[31m-[m
+[31m-class GetController extends CommonController {[m
+[31m-[m
+[31m-    public $enableCsrfValidation = false;[m
+[31m-    protected $actionUsingDefaultProcess = [[m
+[31m-        'getone' => [[m
+[31m-            'scenario' => CardTemplateModel::ACTION_GET_ONE,[m
+[31m-            'method' => 'get',[m
+[31m-            'convert' => false,[m
+[31m-        ],[m
+[31m-        'getall' => [[m
+[31m-            'scenario' => CardTemplateModel::ACTION_GET_ALL,[m
+[31m-            'method' => 'get',[m
+[31m-            'convert' => false,[m
+[31m-        ],[m
+[31m-        '_model' => CardTemplateModel::class,[m
+[31m-    ];[m
+[31m-    protected $access = [[m
+[31m-        'get-one' => ['@', 'get'],[m
+[31m-        'get-all' => ['@', 'get'],[m
+[31m-    ];[m
+[31m-[m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/commodity/modules/registerMember/models/cardtemplate/CardTemplateModel.php b/commodity/modules/registerMember/models/cardtemplate/CardTemplateModel.php[m
+[1mdeleted file mode 100644[m
+[1mindex e361c57..0000000[m
+[1m--- a/commodity/modules/registerMember/models/cardtemplate/CardTemplateModel.php[m
+[1m+++ /dev/null[m
+[36m@@ -1,77 +0,0 @@[m
+[31m-<?php[m
+[31m-/**[m
+[31m- * CRM system for 9daye[m
+[31m- *[m
+[31m- * @author: qzh <qianchaohui@9daye.com.cn>[m
+[31m- */[m
+[31m-[m
+[31m-namespace commodity\modules\member\models\cardtemplate;[m
+[31m-[m
+[31m-use common\models\Model as CommonModel;[m
+[31m-use commodity\modules\member\models\cardtemplate\get\Select;[m
+[31m-use Yii;[m
+[31m-[m
+[31m-class CardTemplateModel extends CommonModel {[m
+[31m-[m
+[31m-    const ACTION_GET_ONE = 'action_getone';[m
+[31m-    const ACTION_GET_ALL = 'action_getall';[m
+[31m-[m
+[31m-    public $token;[m
+[31m-    public $count_per_page;[m
+[31m-    public $page_num;[m
+[31m-    public $id;[m
+[31m-    public $keyword;[m
+[31m-    public $store_id;[m
+[31m-    public $status;[m
+[31m-[m
+[31m-    public function scenarios() {[m
+[31m-        return [[m
+[31m-            self::ACTION_GET_ONE => ['id', 'token'],[m
+[31m-            self::ACTION_GET_ALL => ['token', 'keyword','status'],[m
+[31m-        ];[m
+[31m-    }[m
+[31m-[m
+[31m-    public function rules() {[m
+[31m-        return [[m
+[31m-            [[m
+[31m-                ['id', 'token'],[m
+[31m-                'required',[m
+[31m-                'message' => 2004,[m
+[31m-            ],[m
+[31m-            [[m
+[31m-                ['count_per_page', 'page_num'],[m
+[31m-                'integer',[m
+[31m-                'min' => 1,[m
+[31m-                'tooSmall' => 2004,[m
+[31m-                'message' => 2004,[m
+[31m-            ],[m
+[31m-            ['status', 'default', 'value' => 1],[m
+[31m-        ];[m
+[31m-    }[m
+[31m-[m
+[31m-    public function actionGetone() {[m
+[31m-        try {[m
+[31m-            $result = Select::getone($this->id);[m
+[31m-            if (!$result) {[m
+[31m-                throw new \Exception('无法获取-1', 2005);[m
+[31m-            }[m
+[31m-            return $result;[m
+[31m-        } catch (\Exception $ex) {[m
+[31m-            $this->addError('get-one', 2005);[m
+[31m-            return false;[m
+[31m-        }[m
+[31m-    }[m
+[31m-[m
+[31m-    public function actionGetall() {[m
+[31m-        try {[m
+[31m-            $condition = [];[m
+[31m-            $result = Select::getall($condition);[m
+[31m-        } catch (\Exception $ex) {[m
+[31m-            $this->addError('get-all', 2005);[m
+[31m-            return false;[m
+[31m-        }[m
+[31m-[m
+[31m-        return [];[m
+[31m-    }[m
+[31m-[m
+[31m-}[m
+\ No newline at end of file[m

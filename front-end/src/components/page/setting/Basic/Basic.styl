@@ -1,0 +1,43 @@
+// 主色
+primary-color = #1e88e5
+
+.store-basic-config
+
+  & > nav
+    padding-top 260px
+    text-align center
+    & > a
+      display inline-block
+      width 400px
+      margin-left 15px
+      padding-top 60px
+      padding-bottom 50px
+      border 1px solid primary-color
+      border-radius 10px
+      text-align center
+      cursor pointer
+
+      & > p
+        margin-top 30px
+        margin-bottom 0
+        font-size 28px
+        color primary-color
+
+      &:hover
+        box-shadow 0 0 0 2px primary-color
+
+  .icon
+    display inline-block
+    width 100px
+    height 100px
+    background-position center
+    background-size cover
+    background-repeat no-repeat
+    vertical-align middle
+
+    &.icon-user
+      background-image embedurl('./user.png')
+    &.icon-paper
+      background-image embedurl('./paper.png')
+    &.icon-store
+      background-image embedurl('./store.png')

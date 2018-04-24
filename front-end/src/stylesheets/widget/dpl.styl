@@ -1,0 +1,83 @@
+.crm-dpl
+  position relative
+  border 1px solid #ddd
+  font-size 13px
+
+  &.group-tree-dpl > .list
+      ul
+        &:nth-of-type(n+1)
+          ul
+            display none
+            li
+              padding-left 10px
+            &.show
+              display block
+
+        li
+          padding 0
+          &:hover
+            background-color transparent
+          .item
+            padding-top 5px
+            padding-left 5px
+            white-space nowrap
+            overflow hidden
+            text-overflow ellipsis
+          .item:hover
+            background-color #eee
+
+        .crm-icon
+          display inline-block
+          margin-right 5px
+          vertical-align middle
+
+  & > .value
+    padding-left 5px
+    padding-right 20px
+
+    & > input
+      width 100%
+      margin 0
+      padding 0
+      border none
+
+    & > a
+      position absolute
+      top 50%
+      right 5px
+      margin-top -10px
+      text-decoration none
+      font-size 20px
+      color #969696
+      cursor pointer
+
+      &:hover
+        color #333
+
+  & > .list
+    position absolute
+    z-index 12
+    display none
+    margin-left -1px
+    width 100%
+    max-height 200px
+    border 1px solid #ddd
+    background-color #fff
+    overflow auto
+    font-size 13px
+
+    &.show
+      display block
+
+    ul
+      margin 0
+      padding 0
+      list-style none
+
+      li
+        padding 5px
+        word-break break-all
+        cursor pointer
+
+        &:hover
+          background-color #ddd

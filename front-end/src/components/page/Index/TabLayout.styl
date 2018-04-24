@@ -1,0 +1,98 @@
+.crm-tab-layout
+  height calc(100% - 60px)
+  overflow auto
+
+  & > header
+    padding-top 5px
+    background-color #ededed
+
+    .crm-tabs
+      position relative
+      white-space nowrap
+      overflow hidden
+
+      .crm-tab
+        position relative
+        display inline-block
+        width 70px
+        padding-top 6px
+        padding-right 25px
+        padding-bottom 6px
+        padding-left 5px
+        margin-right 5px
+        margin-bottom -1px
+        font-size 12px
+        border 1px solid #ccc
+        border-bottom none
+        border-top-left-radius 4px
+        border-top-right-radius 4px
+        cursor pointer
+        vertical-align middle
+        overflow hidden
+
+        & > span
+          display inline-block
+          width 100%
+          white-space nowrap
+          overflow hidden
+
+        & > .crm-tab-mask
+          position absolute
+          top 0
+          right 24px
+          width 2em
+          height 100%
+          background linear-gradient(to right, rgba(255,255,255,.1) , rgba(237,237,237,1))
+
+        span
+        i
+          display inline-block
+          vertical-align middle
+
+        &.crm-tab-active
+          background-color #fff
+
+          & > .crm-tab-mask
+            background linear-gradient(to right, rgba(255,255,255,.1) , rgba(255,255,255,1))
+
+          & > .crm-tab-icon-close:hover
+            background-color transparent
+
+      .crm-tab-icon
+        display inline-block
+        width 16px
+        height 16px
+        background-size cover
+        background-repeat no-repeat
+        background-position center
+
+        &.crm-tab-icon-home
+          background-image embedurl('./home.png')
+
+        &.crm-tab-icon-close
+          position absolute
+          top 50%
+          right 5px
+          z-index 2
+          width 14px
+          height 14px
+          margin-top -8px
+          background-image embedurl('./close.png')
+          border 1px solid transparent
+
+          &:hover
+            border 1px solid #d9dee4
+            background-color #d9dee4
+            border-radius 3px
+
+  .crm-panels
+    height calc(100% - 33px)
+    overflow hidden
+
+    & > .crm-panel
+      height 100%
+      display none
+      overflow auto
+
+      &.crm-panel-active
+        display block

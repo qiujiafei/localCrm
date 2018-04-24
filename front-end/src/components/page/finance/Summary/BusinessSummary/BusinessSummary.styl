@@ -1,0 +1,90 @@
+.listWrap
+  width 100%
+
+  .dropdown
+    display block
+    height 50px
+    width 100%
+    background-color #EDEDED
+
+  .listBox
+    width 1400px
+    margin 0 auto
+
+    .subNavWrap
+      padding 0px
+      margin 0
+      margin-top 10px
+      .subCtrl
+        vertical-align middle
+      li
+        margin-right 10px
+        list-style none
+        display inline-block
+        width 320px
+        height 170px
+        border 1px solid #ddd
+        text-align center
+        .title
+          font-size 18px
+          font-weight bold
+          margin 40px 0 40px
+          
+        .count
+          font-size 30px
+          color #666
+          text-decoration none
+          &:hover
+            text-decoration underline
+            cursor pointer
+        .memberbox
+          p
+            margin 0
+            padding 0
+            font-size 18px
+            color #666
+      
+      .active
+        border 2px solid #1e88e5
+        border-bottom none
+        height 180px
+        color #1e88e5
+        position relative
+
+        .count
+          color #1e88e5
+          &:hover
+            text-decoration underline
+            cursor pointer
+
+        &:before
+          position absolute
+          content ''
+          height 16px
+          width 320px
+          background-color #1e88e5
+          top 0
+          left 0
+
+        &:after
+          position absolute
+          content ''
+          height 2px
+          width 320px
+          background-color #fff
+          bottom -2px
+          left 0
+
+    .chartList
+      width 1316px
+      border 2px solid #1e88e5
+      height 605px
+      text-align center
+
+      .chartTitle
+        font-size 18px
+        font-weight bold
+        margin 30px 0 60px
+
+        span 
+          font-size 12px

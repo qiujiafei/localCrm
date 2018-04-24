@@ -1,0 +1,89 @@
+.crm-home
+  display table
+  width 100%
+  height 100%
+  padding 0 !important
+
+  & > .inner
+    display table-cell
+    vertical-align middle
+
+    .grid-list
+      width 600px
+      margin 0 auto
+
+      .home-item
+        position relative
+        display inline-block
+        width calc(50% - 20px)
+        margin-right 20px
+        margin-bottom 20px
+        color #5a738e
+        vertical-align middle
+        cursor pointer
+        border 2px solid transparent
+        border-radius 6px
+
+        &:hover
+          border-color #4b5f71
+          border-width 2px
+          box-shadow 0 0 25px rgba(180,180,180,1)
+          transform translate(0, -10px)
+          transition .1s all
+
+        &:nth-of-type(2n+2)
+          margin-right 0
+
+        & > div
+          border 1px solid #eee
+          border-radius 6px
+          overflow hidden
+
+          & .item-body
+            position relative
+            padding 0 20px
+            text-align right
+
+            & .list
+              position absolute
+              top 10px
+              left 10px
+              margin 0
+              padding 0
+              list-style none
+
+              li
+                margin-bottom 10px
+                font-weight bold
+
+          & header
+            padding 10px 0
+            background-color #f2f5f7
+            border-bottom 1px solid #eee
+            text-align center
+
+            h1
+              margin 0
+              padding 0
+              font-size 20px
+
+            p
+              margin-top 5px
+              margin-bottom 0
+              padding 0
+              font-size 12px
+
+.item-icon
+  display inline-block
+  width 114px
+  height 114px
+  background-size cover
+
+  &.item-icon-1
+    background-image embedurl('./1.png')
+  &.item-icon-2
+    background-image embedurl('./2.png')
+  &.item-icon-3
+    background-image embedurl('./3.png')
+  &.item-icon-4
+    background-image embedurl('./4.png')

@@ -1,0 +1,143 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0;
+}
+
+$fff:#fff;
+$dark:#333;
+.common-title {
+    font-size: 18px;
+    color: #444;
+    line-height: 60px;
+    padding-left: 30px;
+    border-bottom: 1px solid #f4f4f4;
+    position: relative;
+    &::before {
+        content: '';
+        width: 2px;
+        height: 20px;
+        background-color: #66aaff;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+    }
+}
+
+.order-list {
+    width: 100%;
+    th,
+    td {
+        text-indent: 20px;
+        font-weight: normal;
+        line-height: 60px;
+    }
+    th {
+        background-color: #f5f5f5;
+    }
+    tbody {
+        tr {
+            border-bottom: 1px solid #f5f5f5;
+            &:hover {
+                background-color: #ccc;
+            }
+        }
+        td {
+            span {
+                color: #0573fd;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.search-container {
+    margin: 10px 10px;
+    .form-inline {
+        label {
+            margin-left: 10px;
+            font-weight: normal;
+        }
+    }
+    .btn-business {
+        color: #fff;
+        margin-left: 10px;
+        background-color: #0573fd;
+    }
+    .form-group {
+        &:nth-child(1) {
+            input {
+                width: 80px;
+            }
+        }
+        &:nth-child(2) {
+            input {
+                width: 120px;
+            }
+        }
+    }
+    .input-group {
+        width: 105px;
+    }
+}
+
+.status-select {
+    width: 100px;
+    padding: 2px;
+}
+
+.bg-light {
+    background-color: $fff;
+}
+
+.padding-20 {
+    padding: 20px;
+}
+
+.padding-bottom-10 {
+    padding-bottom: 10px;
+}
+.padding-right-30{
+    padding-right: 30px;
+}
+.margin-bottom-10{
+    margin-bottom: 10px;
+}
+
+// btn
+@mixin btn-color($background, $border, $HbgColor, $HbdColor, $fontColor, $FbgColor, $FbdColor, $AbgColor, $AbdColor) {
+    background-color: $background;
+    color: $fontColor;
+    border-color: $border;
+    &:hover {
+        background-color: $HbgColor;
+        border-color: $HbdColor;
+        color: $fontColor;
+    }
+    &:focus {
+        background-color: $FbgColor;
+        border-color: $FbdColor;
+        color: $fontColor;
+    }
+    &:active {
+        background-color: $AbgColor;
+        border-color: $AbdColor;
+    }
+}
+
+.btn-normal {
+    @include btn-color(#337ab7, rgb(46, 109, 164), rgb(40, 96, 144), rgb(32, 77, 116), $fff, rgb(40, 96, 144), rgb(32, 77, 116), rgb(32, 77, 116), rgb(18, 43, 64));
+}
+
+.btn-light {
+    @include btn-color(rgb(255, 255, 255), rgb(204, 204, 204), rgb(230, 230, 230), rgb(173, 173, 173), $dark, rgb(230, 230, 230), rgb(173, 173, 173), rgb(212, 212, 212), rgb(140, 140, 140));
+}
+
+.btn-green {
+    @include btn-color( rgb(38, 185, 154), rgb(22, 159, 133), rgb(22, 159, 133), rgb(7, 129, 87), $fff, rgb(22, 159, 133), rgb(7, 129, 87), rgb(7, 129, 87), rgb(37, 86, 37));
+}
+
+div.checkbox {
+    position: relative;
+    line-height: 30px;
+}

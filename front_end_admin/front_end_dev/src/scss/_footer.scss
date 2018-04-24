@@ -1,0 +1,21 @@
+.#{$global_cname}footer {
+    height: 55px;
+    color: #b3b3b3;
+    background: #eee;
+    position: relative;
+    line-height: 55px;
+    a {
+        color: #b3b3b3;
+        text-decoration: none;
+    }
+}
+
+.#{$global_cname}footer_seller {
+    border-top: 1px solid $btn-default-border;
+    padding-top: 12px;
+    padding-bottom: 60px;
+    a {
+        color: #333;
+        text-decoration: none;
+    }
+}

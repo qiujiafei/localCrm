@@ -1,0 +1,431 @@
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CRM综合管理平台</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=1220">
+    <meta http-equiv="X-UA-Compatible" content="edge" />
+    <meta name="renderer" content="webkit">
+    <link href="https://cdn.bootcss.com/bootstrap-sweetalert/1.0.1/sweetalert.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="styles/role-manager-79d7ae3d4c.css">
+</head>
+
+<body>
+
+    <!-- header start -->
+<header class="business-frame-header">
+    <nav class="navbar navbar-default">
+        <div class="navbar-logo pull-left">
+            <img alt="logo" src="./images/logo.png" >
+            <div class='navbar-logo-title'>
+                <p>CRM</p>
+                <p>综合管理后台</p>
+            </div>
+        </div>
+        <div class="navbar-title pull-left">
+            管理员控制中心
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <img src="./images/hummingbird/user_icon_20.png" alt="">
+                <span data-id="username"></span>
+            </li>
+            <li>
+                <a data-id="logout" href="./login.html">
+                    退出
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<!-- header end -->
+<!-- aside nav start -->
+<aside class="business-frame-aside">
+    <div class="aside-list">
+        <a href="/index.html" class="collapsed">
+            <i class="glyphicon glyphicon-home"></i> 首页
+        </a>
+    </div>
+    <div class="aside-list">
+        <a data-toggle="collapse" href="#aside_panel_2" class="collapsed">
+            <i class="glyphicon glyphicon-th-list"></i> 门店管理
+            <i class="glyphicon glyphicon-chevron-down"></i>
+        </a>
+        <div class="collapse" id="aside_panel_2">
+            <ul class="list-unstyled clearfix">
+                <li>
+                    <a href="/store_info.html">门店信息</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="aside-list">
+        <a href="/role_manager.html" class="collapsed">
+            <i class="glyphicon glyphicon-user"></i> 角色管理
+        </a>
+    </div>
+</aside>
+<!-- aside nav end -->
+
+
+    <!-- main area start -->
+    <div class="business-frame-main">
+        <div class="business-main-wrap">
+            <div class="title-container">
+                <p class="title">角色管理</p>
+                <p class="title-url">
+                    <a href="./index.html">首页</a> /
+                    <span class="selected">角色管理</span>
+                </p>
+                <div class="role-manager-container">
+                    <div style="position: relative;">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#home" aria-controls="home" id="role" role="tab" data-toggle="tab">角色/权限</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#profile" aria-controls="profile" id="account" role="tab" data-toggle="tab">账号编辑</a>
+                            </li>
+
+                        </ul>
+                        <div class="nav-backdrop"></div>
+                    </div>
+
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <!-- 角色/权限 -->
+                        <div role="tabpanel" class="tab-pane fade active in" id="home">
+                            <div class="padding-20 bg-light">
+                                <div class="padding-bottom-10">
+                                    <button class="btn btn-normal" data-toggle="modal" id="creatRole">
+                                        <i class="icon icon-btn-add"></i>添加新角色</button>
+                                </div>
+                                <div class="role_table">
+                                    <div class="role_table_left">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" class="index">序号</th>
+                                                    <th scope="col">角色名称</th>
+                                                    <th scope="col" class="operation">操作</th>
+                                                    <th style="width: 17px;"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="role_box"></tbody>
+
+                                        </table>
+
+                                    </div>
+
+                                    <div class="role_table_right">
+                                        <div class="role_table_right_head">
+                                            <p>权限设置</p>
+                                        </div>
+                                        <div class="table_body padding-20 set_checkbox">
+                                            <form>
+                                                <div>
+                                                    <p>门店管理</p>
+                                                    <div id="role_stroe_manager">
+
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <p>权限设置</p>
+                                                    <div id="role_power_set">
+
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <button class="btn btn-normal" id="save_role_power">确定</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 权限管理 -->
+                        <div role="tabpanel" class="tab-pane fade" id="profile">
+                            <div class="padding-20 bg-light">
+                                <div class="func-head form-inline">
+                                    <button class="btn btn-normal" data-toggle="modal" id="creatAccount">
+                                        <i class="icon icon-btn-add"></i>添加新账号</button>
+                                    <div class="seach-group">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="exampleInputAmount"></label>
+                                            <div class="input-group role-name">
+                                                <div class="input-group-addon">角色名称</div>
+                                                <div class="dropdown">
+                                                    <select class="form-control dropdown-role-menu" id="role-menu">
+
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="exampleInputAmount"></label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">搜索</div>
+                                                <input type="text" class="form-control seach-input" id="power-seach-input" placeholder="请输入姓名">
+                                            </div>
+                                            <button class="btn btn-green" id="power-seach">查询</button>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+                                <div class="power_table">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="index">序号</th>
+                                                <th scope="col">账号</th>
+                                                <th scope="col">姓名</th>
+                                                <th scope="col">手机号</th>
+                                                <th scope="col">邮箱</th>
+                                                <th scope="col">角色</th>
+                                                <th scope="col">操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="power_box">
+                                        </tbody>
+
+                                    </table>
+
+                                    <div id="power_box_page"></div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- Modal -->
+    <div class="modal fade creatRoleModel" id="creatRoleModal" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title" id="creatRoleModalLabel">添加新角色</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-inline role-form">
+                        <div class="form-group">
+                            <label class="sr-only" for="exampleInputAmount"></label>
+                            <div class="input-group">
+                                <div class="input-group-addon role-name">角色名称</div>
+                                <input type="text" onkeyup="this.value=this.value.replace(/^\s+|\s+$/g,'')" class="form-control role-name-input" autofocus id="role-name">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="role-help-msg">
+                        <i class="icon icon-warn"></i>
+                        <em></em>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-normal" id="saveRole">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade userInfoModal" id="userInfoModal" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="userInfo">
+                        <img src="./images/app/success.png" width="68" height="68" alt="">
+                        <h5>新账号已生成</h5>
+                        <p>登陆账号：
+                            <em></em>
+                        </p>
+                        <button type="button" class="btn btn-normal" data-dismiss="modal" aria-label="Close">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="creatOrEditAccountModal" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-centered creatAccountModel" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title" id="creatAccountModelLabel">添加新账号</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-inline creatAccountModelForm">
+                        <div class="set-power-info">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">姓名</div>
+                                    <input type="text" class="form-control name" maxlength="10" required placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">手机号</div>
+                                    <input type="text" class="form-control mobile" maxlength="11" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">邮箱</div>
+                                    <input type="text" class="form-control email" maxlength="30" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="set-power-password">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon password">设置密码</div>
+                                    <input type="password" class="passwd form-control" maxlength="11" placeholder="">
+                                    <div class="icon icon-passwd-display passwd-icon" data-state="0"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon password">确定密码</div>
+                                    <input type="password" class="verify_passwd form-control" maxlength="11" placeholder="">
+                                    <div class="icon icon-passwd-display verify-passwd-icon" data-state="0"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </form>
+                    <div class="selected-role">
+                        <p>选择角色</p>
+
+                        <div id="creatOrEidtAccount">
+
+                        </div>
+                    </div>
+
+                    <div class="powerBox">
+                        <h5>权限</h5>
+
+                        <div>
+                            <p>门店管理</p>
+                            <div id="account_stroe_manager">
+
+                            </div>
+                        </div>
+                        <div>
+                            <p>权限设置</p>
+                            <div id="account_power_set">
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-normal" id="saveAccount">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/template" id="tpl_role">
+        {@each _ as it,index}
+            <tr data-serviceId="${it.id}">
+                <td class="index">${+index+1}</td>
+                <td>${it.name}</td>
+                <td class="operation">
+                    <a class="del" data-serviceId="${it.id}">删除</a>
+                </td>
+            </tr>
+        {@/each}
+    </script>
+
+    <script type="text/template" id="tpl_power">
+        {@each _ as it,index}
+            <tr>
+                <td class="index">${+index+1}</td>
+                <td>${it.account}</td>
+                <td>${it.name}</td>
+                <td>${it.mobile}</td>
+                <td>${it.email}</td>
+                <td>${it.role_name}</td>
+                <td class="action">
+                    <a class="edit" data-serviceId="${it.id}">修改</a>
+                    <a class="del" data-serviceId="${it.id}">删除</a>
+                </td>
+            </tr>
+
+        {@/each}
+    </script>
+    <script type="text/template" id="tpl_role_dropdown_menu">
+            <option data-serviceId="">全部</option>
+            {@each _ as it}
+            <option data-serviceId="${it.id}">${it.name}</option>
+            {@/each}
+        </ul>
+    </script>
+
+    <script type="text/template" id="tpl_role_radio">
+        {@each _ as it,index}
+        <div class="radio-group">
+                <input type="radio" name="radio" id="${it.id}">
+                <label  for="${it.id}">
+                    <i></i> </label>
+                <span>${it.name}</span>
+            </div>
+
+        {@/each}
+    </script>
+    <script type="text/template" id="tpl_role_checkbox">
+        {@each _ as it,index}
+        <div class="checkbox-group">
+                {@if it.is_valid==true }
+                <input type="checkbox" checked="checked" id="${it.id}">
+                {@else}
+                <input type="checkbox" id="${it.id}">
+                {@/if}
+                <label class="checkbox" for="${it.id}"> </label>
+                <span>${it.name}</span>
+            </div>
+
+        {@/each}
+    </script>
+    <script type="text/template" id="tpl_resource_list">
+        {@each _ as it,index}
+        {@if it.is_valid==true }
+        <span class="padding-right-30 margin-bottom-10"> ${it.name}</span>
+        {@/if}
+        {@/each}
+    </script> <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-daterangepicker/2.1.25/moment.js"></script>
+<link href="https://cdn.bootcss.com/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" rel='stylesheet'></link>
+<script src="https://cdn.bootcss.com/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+
+    <script src="scripts/role_manager-6f62a10bf4.js"></script>
+</body>
+
+<>

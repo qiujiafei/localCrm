@@ -1,0 +1,92 @@
+/*
+ * CRM 单据页面样式
+ * Author: tanglijun
+ */
+.crm-bill-page
+  & > header
+    position relative
+    height 50px
+    padding 10px
+
+    & > div
+      position absolute
+      top 50%
+      right 10px
+      margin-top -16px
+
+    & .crm-input
+      margin-left 5px
+      background-color #fff
+
+    & .crm-button
+      margin-left 5px
+      vertical-align middle
+
+  & > .body
+    padding 10px
+
+    // 重写表格样式
+    .crm-table
+      input
+        width 100%
+        margin 0
+        padding 0
+        border none
+        outline none
+        box-shadow: none
+        background-color #fff
+        text-align center
+
+      .rt-tbody
+        .crm-table
+          .crm-table-cell
+            padding 7px 5px !important
+
+        .crm-table-cell
+          padding 0
+          overflow visible
+
+          .text-field
+          & > input
+            padding 10px 0
+
+          .crm-dropdown-table
+            input
+              margin 10px 0
+
+          .crm-dpl
+            border none
+
+            .value
+              background-color #fff
+
+              input
+                padding 10px 0
+                background-color transparent
+
+            .list
+              height 200px
+              text-align left
+
+        .crm-icon
+          margin-top 7.5px
+          cursor pointer
+
+      .rt-tfoot
+        .crm-table-cell
+          padding 7px 5px
+
+    & > .calculation
+      margin-top 10px
+
+      & .crm-input
+        margin-right 10px
+
+    & > footer
+      margin-top 10px
+      padding 10px 0
+      border-top 1px solid #eee
+      text-align right
+
+      .button-secondary
+        margin-right 10px

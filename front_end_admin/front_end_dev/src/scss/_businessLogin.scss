@@ -1,0 +1,139 @@
+@mixin border-background-color($borderColor, $backgroundColor) {
+    border-color: $borderColor;
+    background-color: $backgroundColor;
+}
+
+$help-msg-color: #e53935;
+.business-login {
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    background: url('/images/hummingbird/page_bg.jpg') no-repeat center center;
+    background-size: cover;
+    .business-login-title {
+        height: 156px;
+        font-size: 28px;
+        z-index: 2;
+        background-color: #fff;
+        p {
+            line-height: 136px;
+            padding-top: 10px;
+            margin-left: 100px;
+            color: #144fcc;
+            padding-left: 50px;
+            background: url('/images/business/login/logo.png') no-repeat left 60px;
+        }
+    }
+    .head {
+        text-align: center;
+        font-size: 36px;
+        color: #ffffff;
+        margin-top: 60px;
+        .sub_head {
+            font-size: 18px;
+        }
+    }
+    .content {
+        position: relative;
+        .login {
+            width: 320px;
+            background: #fff;
+            border-radius: 5px;
+            padding-top: 30px;
+            margin: 0 auto;
+            margin-top: 30px;
+            box-shadow: 0px 10px 30px 0 rgba(0, 0, 0, 0.2);
+            .logo {
+                display: block;
+                margin: 0 auto;
+            }
+            .logn_title {
+                padding-top: 12px;
+                font-weight: bold;
+                text-align: center;
+                font-size: 18px;
+            }
+            .login-input {
+                margin: 15px 20px 0 20px;
+                .form-group {
+                    padding-top: 15px;
+                    display: block;
+                    width: 100%;
+                    margin-bottom: 0px;
+                    .form-row {
+                        background-color: #e6e9ed;
+                        padding: 0 13px;
+                        border-radius: 5px;
+                        position: relative;
+                        input {
+                            width: 80%;
+                        }
+                    }
+                    .help-msg {
+                        padding-top: 15px;
+                        padding-left: 13px;
+                        color: $help-msg-color;
+                        display: none;
+                        em {
+                            font-style: normal;
+                        }
+                    }
+                    &:nth-of-type(3){
+                        padding-top: 0;
+                    }
+                    &:last-child {
+                        padding-bottom: 30px;
+                    }
+                }
+                input {
+                    height: 38px;
+                    border: none;
+                    background: transparent;
+                    box-shadow: none;
+                    font-size: 13px;
+                    display: inline-block;
+                }
+                .captcha-box {
+                    padding: 0;
+                }
+                .J_verify_captcha {
+                    width: 60px;
+                    margin-top: 6px;
+                }
+                .login-btn {
+                    color: #fff;
+                    font-size: 13px;
+                    line-height: 36px;
+                    border-width: 1px;
+                    border-style: solid;
+                    border-radius: 3px;
+                    @include border-background-color(rgb(22,
+                    159,
+                    133),
+                    rgb(38,
+                    185,
+                    154));
+                    &:hover {
+                        @include border-background-color(rgb(7,
+                        129,
+                        87),
+                        rgb(22,
+                        159,
+                        133));
+                    }
+                    &:active {
+                        @include border-background-color(rgb(37,
+                        86,
+                        37),
+                        rgb(7,
+                        129,
+                        87));
+                    }
+                }
+            }
+        }
+    }
+}

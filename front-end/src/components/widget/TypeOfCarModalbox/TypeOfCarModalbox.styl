@@ -1,0 +1,50 @@
+.type-of-car-modalbox
+  position absolute
+  top 60px
+  left 0
+  padding 0 10px
+  width calc(100% - 20px)
+  height calc(100% - 130px)
+
+  .item
+    position relative
+    display inline-block
+    width calc(25% - 2px)
+    height 100%
+    border 1px solid #ddd
+    vertical-align top
+
+    header
+      padding-top 5px
+      padding-bottom 5px
+      border-bottom 1px solid #ddd
+      text-align center
+
+    .crm-indicator
+      position absolute
+
+    ul
+      height calc(100% - 30px)
+      margin 0
+      padding 0
+      list-style none
+      overflow auto
+
+      li
+        padding-left 10px
+        padding-right 10px
+        padding-top 5px
+        padding-bottom 5px
+        border-bottom 1px dashed #ddd
+        cursor pointer
+
+        &.on
+          background-color #eee
+
+        &:last-child
+          border none
+
+        i
+          display inline-block
+          vertical-align middle
+          margin-right 10px

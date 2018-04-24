@@ -1,0 +1,70 @@
+.crm-advanced-modalbox
+  position fixed
+  top 0
+  left 0
+  z-index 13
+  display table
+  width 100%
+  height 100%
+  background-color rgba(0,0,0,.5)
+
+  & > .inner
+    display table-cell
+    vertical-align middle
+
+    & > .box
+      margin 0 auto
+      background-color #fff
+
+      & > .body
+        & > .left
+          position relative
+          display inline-block
+          width 100%
+
+          & > header
+            padding 10px
+
+            & > div
+              & > .crm-input
+                margin-right 10px
+                vertical-align middle
+
+              & > .crm-button
+                vertical-align middle
+
+          & > footer
+            padding 0 10px
+
+          & > .crm-table
+            margin-right 10px
+            margin-left 10px
+            margin-bottom 10px
+
+          & > .crm-indicator
+            position absolute
+
+        // & > .right
+        //   display inline-block
+        //   width 30%
+
+      & > header
+        position relative
+        height 50px
+        line-height 50px
+        background-color #eee
+
+        & > span
+          padding-left 10px
+
+        & > .crm-icon-close
+          position absolute
+          top 50%
+          right 10px
+          width 16px
+          height 16px
+          margin-top -8px
+          border none
+          background-color transparent
+          outline none
+          cursor pointer

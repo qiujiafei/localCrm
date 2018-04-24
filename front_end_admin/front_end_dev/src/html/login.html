@@ -1,0 +1,70 @@
+@@include('head.inc')
+<!-- build:css({.tmp/serve,src}) styles/login.css -->
+<!-- inject:css -->
+<!-- css files will be automatically insert here -->
+<!-- endinject -->
+<!-- endbuild -->
+</head>
+
+<body>
+
+    <div class="business-login">
+        <div class="content">
+            <div class="head">登录
+                <div class="sub_head">SIGN IN</div>
+            </div>
+
+            <form class="login form-inline">
+                <div class="form-group error-msg hidden">
+                    <div class="">
+                        <!-- addClass 'invisible' to hide the error msg -->
+                        <p class="form-control-static text-center text-danger invisible J_error_msg">
+                            <i class="glyphicon glyphicon-remove"></i>用户名</p>
+                    </div>
+                </div>
+                <img class="logo" src="/images/hummingbird/logo.png" width="72px" height="66px" alt="九大爷">
+                <div class="logn_title">九大爷CRM综合管理后台</div>
+                <div class="login-input">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <label for="username">
+                                <i class="icon icon-user"></i>
+                            </label>
+                            <input type="text" autofocus onkeyup="this.value=this.value.replace(/^\s+|\s+$/g,'')" class="form-control" id="username" maxlength="8" placeholder="请输入您的用户名">
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <label for="password">
+                                <i class="icon icon-password"></i>
+                            </label>
+                            <input type="password" onkeyup="this.value=this.value.replace(/^\s+|\s+$/g,'')" class="form-control" id="password" maxlength="30" placeholder="请输入您的密码">
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="help-msg">
+                            <i class="icon icon-warn"></i>
+                            <em></em>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <a disabled="disabled" class="btn login-btn btn-block" id="J_login_btn">登 录</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    @@include('cdn.inc')
+    <!-- build:js({.tmp/serve,src}) scripts/login.js -->
+    <!-- inject:js -->
+    <!-- js files will be automatically insert here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+</body>
+
+</html>

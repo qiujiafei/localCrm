@@ -1,0 +1,265 @@
+@@include('head.inc')
+<!-- build:css({.tmp/serve,src}) styles/storeInfo.css -->
+<!-- inject:css -->
+<!-- css files will be automatically insert here -->
+<!-- endinject -->
+<!-- endbuild -->
+</head>
+
+<body>
+
+    @@include('layout_header.inc')
+
+    <!-- main area start -->
+    <div class="business-frame-main">
+        <div class="business-main-wrap">
+            <div class="title-container">
+                <p class="title">门店信息</p>
+                <p class="title-url">
+                    <a href="./index.html">首页</a>&nbsp;&nbsp;/&nbsp;&nbsp;门店管理&nbsp;&nbsp;/
+                    <span class="selected">门店信息</span>
+                </p>
+            </div>
+
+            <div class="store-info-container">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="active" role="presentation">
+                        <a href="#authorized_stores" role="tab" data-toggle="tab">授权门店</a>
+                    </li>
+                    <li class="" role="presentation">
+                        <a href="#disabled_stores" role="tab" data-toggle="tab">禁用门店</a>
+                    </li>
+
+                </ul>
+
+                <div class="tab-content">
+                    <!-- 授权门店 -->
+                    <div role="tabpanel" class="tab-pane fade in active" id="authorized_stores">
+                        <div class="search-container">
+                            <form class="form-inline">
+
+                                <div class="form-group">
+                                    <div class="search-component">
+                                        <span for="searchInputAccountOn" class="search-account search-account-on">搜索</span>
+                                        <input class="input-control" type="text" data-id="storeAccount" id="searchInputAccountOn" placeholder="请输入门店账号">
+                                    </div>
+                                </div>
+
+                                <div class="form-right form-group">
+
+                                    <div class="input-group">
+                                        <div class="dropdown">
+                                            <select class="form-control dropdown-role-menu time-type-on" id="role-menu">
+                                                <option value="">按注册时间</option>
+                                                <option value="1">按最近一次登录时间</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-group">
+                                        <div class="time-group">
+                                            <input data-id="starttimeOn" type="text " class="form-control date-picker "  value="" placeholder="请输入开始时间">
+                                            <span class="to">至</span>
+                                            <input data-id="endtimeOn" type="text " class="form-control date-picker " value=" " placeholder="请输入结束时间">
+                                        </div>
+                                    </div>
+
+                                    <span data-id="searchOn" class="btn btn-search">查询</span>
+
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="store-list">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>门店账号</th>
+                                        <th>联系电话</th>
+                                        <th>注册日期</th>
+                                        <th>最近一次登录时间</th>
+                                        <th>来源IP</th>
+                                        <th>IP所在地</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="J_store_box">
+
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <div class="text-right page-control" id="J_pageOn_box"></div>
+                    </div>
+
+                    <!-- 禁用门店 -->
+                    <div role="tabpanel" class="tab-pane fade" id="disabled_stores">
+                        <div class="search-container">
+                            <form class="form-inline">
+
+                                <div class="form-group">
+                                    <div class="search-component">
+                                        <span for="searchInputAccount" class="search-account search-account-stop">搜索</span>
+                                        <input class="input-control" type="text" data-id="storeAccount" id="searchInputAccountStop" placeholder="请输入门店账号">
+                                    </div>
+                                </div>
+
+                                <div class="form-right form-group">
+
+                                    <div class="input-group">
+                                        <div class="dropdown">
+                                            <select class="form-control dropdown-role-menu time-type-stop" id="role-menu">
+                                                <option value="">按注册时间</option>
+                                                <option value="2">按禁用时间</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-group">
+                                        <div class="time-group">
+                                            <input data-id="starttimeStop" type="text " class="form-control date-picker "  placeholder="请输入开始时间">
+                                            <span class="to">至</span>
+                                            <input data-id="endtimeStop" type="text " class="form-control date-picker "placeholder="请输入结束时间">
+                                        </div>
+                                    </div>
+
+                                    <span data-id="searchStop" class="btn btn-search">查询</span>
+
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="store-list">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>门店账号</th>
+                                        <th>联系电话</th>
+                                        <th>注册日期</th>
+                                        <th>最后一次登录时间</th>
+                                        <th>禁用时间</th>
+                                        <th>备注</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="J_storeStop_box">
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-right page-control" id="J_pageStop_box" ></div>
+                        
+                    </div>
+
+                    <!-- 测试账号 -->
+                    <!-- <div role="tabpanel" class="tab-pane fade" id="test_account" >
+            <div class="search-container">33333</div>
+            <div class="store-list">333</div>
+        </div> -->
+                </div>
+            </div>
+
+            <!-- 禁用备注 -->
+
+            <div class="modal fade confirm-stop" id="comment_container" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <p>禁用确认</p>
+                            <img data-dismiss="modal" src="../images/window_close_icon.png" alt="">
+                        </div>
+                        <div class="modal-body">
+                            <p class="red">您确定要禁用该门店？禁用该门店将无法登录</p>
+                            <textarea name="" id="comment" cols="30" rows="10" maxlength="100"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary stop-confirm" data-id="">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 启用确认 -->
+            <div class="modal fade confirm-on" id="on_container" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        
+                        <div class="modal-body">
+                            <p class="red">是否启用该门店</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">否</button>
+                            <button type="button" class="btn btn-primary on-confirm" data-id="">是</button>
+                        </div>
+                    </div>
+                </div>
+            </div>     
+            
+            
+
+        </div>
+    </div>
+
+
+    <!-- 授权门店 -->
+    <script type="text/template" id="J_tpl_storeOn">
+        {@each _ as it, index}
+        <tr>
+            <td>${index-0+1}</td>
+            <td>${it.account}</td>
+            {@if it.mobile == null}
+                <td></td>
+                {@else}
+            <td>${it.mobile}</td>
+            {@/if}
+            <td>${it.created_time}</td>
+            {@if it.last_login_time == null} 
+                <td></td>
+                {@else}
+                <td>${it.last_login_time}</td>
+            {@/if}
+            <td>${it.ip_number}</td>
+            <td>${it.ip_address}</td>
+            <td class="red stop" data-toggle="modal" data-id="${it.id}" data-target="#comment_container">禁用</td>
+        </tr>
+        {@/each}
+    </script>
+
+    <!-- 禁用门店 -->
+    <script type="text/template" id="J_tpl_storeStop">
+        {@each _ as it, index}
+        <tr>
+            <td>${index-0+1}</td>
+            <td>${it.account}</td>
+            {@if it.mobile == null}
+                <td></td>
+                {@else}
+            <td>${it.mobile}</td>
+            {@/if}
+            <td>${it.created_time}</td>
+            {@if it.last_login_time == null} 
+                <td></td>
+                {@else}
+                <td>${it.last_login_time}</td>
+            {@/if}
+            <td>${it.last_modified_time}</td>
+            <td title="${it.comment}">${it.comment}</td>
+            <td class="red re-using" data-id="${it.id}" data-toggle="modal" data-target="#on_container">启用</td>
+        </tr>
+        {@/each}
+    </script>
+    @@include('cdn.inc')
+
+    <!-- build:js({.tmp/serve,src}) scripts/store_info.js -->
+    <!-- inject:js -->
+    <!-- js files will be automatically insert here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+</body>
+
+</html>

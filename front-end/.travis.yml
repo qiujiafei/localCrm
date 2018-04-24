@@ -1,0 +1,13 @@
+branches:
+  only:
+    - master
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+    - node_modules
+script:
+  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./scripts/deploy.sh; fi
+notifications:
+  email: false

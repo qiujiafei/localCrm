@@ -1,0 +1,37 @@
+.crm-icon
+  types = {
+    add: true
+    export: true
+    group: true
+    unit: true
+    delete: true
+    close: true
+    category: true
+    category-open: true
+    file: true
+    setting: true,
+    enable: true,
+    item-minus: true,
+    item-plus: true,
+    disable: true,
+    disabled-user: true,
+    edit: true,
+    batchsharing: true,
+    checked: true,
+    print: true
+    refresh: true,
+    date: true,
+    settlement: true
+  }
+
+  display block
+  width 20px
+  height 20px
+  margin 0 auto
+  background-position center
+  background-repeat no-repeat
+  background-size contain
+
+  for key in types
+    &.crm-icon-{key}
+      background-image embedurl('../images/icon/'key'.png')

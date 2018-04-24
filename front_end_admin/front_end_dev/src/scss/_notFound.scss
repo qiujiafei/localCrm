@@ -1,0 +1,50 @@
+// not found
+.#{$global_cname}not-found {
+    &.full{
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        max-height: inherit;
+        height: 100%;
+    }
+    position: relative;
+    // padding: 393px 0 364px;
+    height: 800px;
+    max-height: 800px;
+    height: 80vh;
+    background: url(/images/not_found_bg.png) no-repeat center;
+    background-size: contain;
+    > .text-center {
+        position: absolute;
+        top: -205px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        height: 227px;
+        width: 100%;
+    }
+    img {
+        display: inline-block;
+        width: 250px;
+    }
+    h4{
+        display: inline-block;
+        font-size: 40px;
+        vertical-align: middle;
+        small{
+            margin-top: 12px;
+            font-size: 32px;
+            display: block;
+        }
+    }
+    .high-lighted{
+        color: #ef2626;
+    }
+    .btn{
+        width: 240px;
+        margin: 60px auto;
+    }
+}

@@ -1,0 +1,27 @@
+.crm-radio-button-group
+  display inline-block
+  border 1px solid #ddd
+  border-radius 4px
+  vertical-align middle
+  overflow hidden
+
+  & > label
+    display inline-block
+    padding 7px 20px
+    background-color #fff
+    border-right 1px solid #ddd
+    cursor pointer
+
+    &.on
+      background-color #1e88e5
+      color #fff
+      border-right-color #1e88e5
+
+    &:last-child
+      border-right none
+
+    & > span
+      font-size 13px
+
+    & > input[type="radio"]
+      display none

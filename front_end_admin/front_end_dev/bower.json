@@ -1,0 +1,14 @@
+{
+  "name": "demo",
+  "dependencies": {
+    "bootstrap-sass": "3.3.7",
+    "jquery": "2.2.4",
+    "iscroll": "^5.2.0",
+    "lightbox2": "^2.9.0",
+    "bootstrap-select": "^1.12.2",
+    "bootstrap-datepicker": "^1.6.4",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47",
+    "highcharts": "^5.0.14"
+  },
+  "devDependencies": {}
+}

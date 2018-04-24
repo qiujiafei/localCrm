@@ -1,0 +1,515 @@
+.td-width {
+    tr {
+        td.index,
+        th.index {
+            width: 60px;
+            border-right: 1px solid #dddddd;
+        }
+        td.operation,
+        th.operation {
+            width: 60px;
+            border-left: 1px solid #dddddd;
+        }
+    }
+}
+
+@mixin role_table($width, $float) {
+    width: $width;
+    float: $float;
+    border: 1px solid #ddd;
+}
+
+.business-frame-main {
+    .business-main-wrap {
+        .title-container {
+            background-color: #EFF0F4;
+            .title {
+                font-size: 24px;
+                color: #2f3b43;
+                padding-bottom: 14px;
+                width: 100%;
+                text-align: left;
+                margin-bottom: 0;
+                position: relative;
+                top: 0;
+                left: 0;
+            }
+            .title-url {
+                font-size: 14px;
+                color: #8e8e8e;
+                .selected {
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+} // nav
+.nav.nav-tabs {
+    height: 48px;
+    position: relative;
+    z-index: 2;
+    border-bottom: none;
+    li.active,
+    li {
+        bottom: -1px;
+        a,
+        a:hover,
+        a:focus {
+            padding: 14px 15px;
+            border: none;
+            border-radius: 0;
+        }
+    }
+    li.active {
+        a {
+            color: #26b99a;
+        }
+    }
+    li {
+        bottom: -7px;
+        a,
+        a:hover {
+            margin: 0;
+            padding: 10.5px 14px;
+            border: none;
+        }
+    }
+}
+
+.nav-backdrop {
+    background-color: #ddd;
+    height: 40px;
+    position: absolute;
+    width: 100%;
+    bottom: 1px;
+    z-index: 1;
+}
+
+.role_table {
+    width: 100%;
+    display: flex;
+    min-height: 600px;
+    overflow: auto;
+    .table_body {
+        height: 600px;
+    } // custom inpuyt
+}
+
+.role_table,
+.creatAccountModel {
+    .checkbox {
+        display: inline-block;
+        position: relative;
+    }
+    .radio-group,
+    .checkbox-group {
+        display: inline-block;
+        position: relative;
+        padding-bottom: 20px;
+        margin-right: 30px;
+    }
+    input[type="radio"],
+    input[type="checkbox"] {
+        position: absolute;
+        width: 100%;
+        height: 20px;
+        opacity: 0;
+        margin: 0 !important;
+        cursor: pointer;
+    }
+    label {
+        vertical-align: middle;
+        padding-left: 0px !important;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 1px solid #999;
+        margin: 0;
+        display: inline-block;
+    }
+    label.checkbox {
+        border-radius: 0;
+    }
+    /*设置选中的input的样式*/
+    /* + 是兄弟选择器,获取选中后的label元素*/
+    input:checked+label {
+        background-color: #169f85;
+        border: 1px solid #169f85;
+        padding: 0;
+    }
+    input:checked+label::after {
+        @extend .angle;
+    }
+    .angle {
+        position: absolute;
+        content: "";
+        width: 5px;
+        height: 10px;
+        top: 4px;
+        left: 7px;
+        border: 2px solid #fff;
+        border-top: none;
+        border-left: none;
+        transform: rotate(45deg)
+    }
+    input:checked+label>i.checked {
+        @extend .angle;
+    }
+}
+
+// table thead,
+// tbody tr {
+//     display: table;
+//     width: 100%;
+//     table-layout: fixed;
+//     td,
+//     th {
+//         text-align: center;
+//     }
+// }
+tbody tr:last-child {
+    border-bottom: 1px solid #ddd;
+}
+
+.role_table_left {
+    @include role_table(43%, left);
+    .table {
+        tbody {
+            display: block;
+            max-height: 600px;
+            overflow-y: scroll;
+            tr.selected {
+                background-color: #f5f5f5;
+                color: initial;
+            }
+            td {
+                a.del {
+                    color: #5a738e;
+                    cursor: pointer;
+                }
+            }
+        }
+        @extend .td-width;
+    }
+}
+
+.role_table_right {
+    margin-left: 20px;
+    position: relative;
+    @include role_table(55%, left);
+    .role_table_right_head {
+        padding: 10px;
+        border-bottom: 1px solid #e6e9ed;
+        p {
+            margin-bottom: 0;
+        }
+    }
+    .set_checkbox {
+        transition: all .3s ease-in;
+        opacity: 0;
+        padding-left: 20px;
+        P {
+            font-weight: bold;
+        }
+    }
+    .set_checkbox.show {
+        opacity: 1;
+    }
+    button {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        width: 76px;
+        margin-left: 76 / 2;
+    }
+} // model
+.creatRoleModel,
+.creatAccountModel {
+    .modal-content {
+        border-radius: 0;
+        .modal-header {
+            border-bottom: none;
+            background-color: #dddddd;
+        }
+        .role-form {
+            display: flex;
+            justify-content: space-around;
+        }
+        .modal-footer {
+            text-align: center;
+            border-top: none;
+            padding-bottom: 50px;
+            .btn-normal,
+            .btn-light {
+                border-radius: 3px;
+                height: 36px;
+                width: 76px;
+            }
+        }
+    }
+}
+
+.creatAccountModelForm {
+    height: 120px;
+}
+
+.role-help-msg {
+    display: none;
+    text-align: center;
+    padding-top: 20px;
+    em {
+        font-style: normal;
+        color: #e53935;
+    }
+}
+
+@mixin model-input($width) {
+    border-radius: 0;
+    width: $width;
+    height: 40px;
+    box-shadow: none;
+    border-color: #e6e9ed;
+}
+
+@mixin required($left:0) {
+    &::before {
+        content: "*";
+        color: #e53935;
+        position: absolute;
+        left: $left;
+    }
+}
+
+@media (min-width: 768px) {
+    .modal-dialog.modal-centered {
+        margin: 18% auto;
+        width: 540px;
+        .role-name {
+            @include model-input(140px);
+            position: relative;
+            @include required(32px);
+        }
+        .role-name-input {
+            @include model-input(280px);
+        }
+    }
+    .modal-dialog.modal-centered.creatAccountModel {
+        margin: 5% auto;
+        width: 960px;
+        .modal-body {
+            padding: 15px 50px;
+            height: 630px;
+            overflow: auto;
+            .set-power-info,
+            .set-power-password {
+                display: flex;
+                .input-group-addon {
+                    width: 140px;
+                    border-radius: 0;
+                    border-color: #e6e9ed;
+                }
+                .password {
+                    position: relative;
+                    @include required(32px);
+                }
+                input[type="text"] {
+                    width: 180px;
+                    border-radius: 0;
+                    border-color: #e6e9ed;
+                    box-shadow: none;
+                    height: 40px;
+                }
+                input[type="text"].passwd,
+                input[type="text"].verify_passwd,
+                input[type="password"].verify_passwd,
+                input[type="password"].passwd {
+                    width: 255px;
+                    height: 40px;
+                    border: none;
+                    box-shadow: none;
+                }
+            }
+            .set-power-password {
+                width: 100%;
+                .form-group {
+                    width: 50%;
+                    position: relative;
+                    border: 1px solid #e6e9ed;
+                    .input-group {
+                        .input-group-addon {
+                            border: none;
+                            border-right: 1px solid #e6e9ed;
+                        }
+                        .icon {
+                            position: absolute;
+                            cursor: pointer;
+                            top: 9px;
+                            z-index: 2;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .userInfoModal {
+        .modal-dialog {
+            width: 266px;
+            .userInfo {
+                text-align: center;
+                h5 {
+                    font-size: 22px;
+                    color: #26b99a;
+                }
+                p {
+                    padding: 30px 0;
+                    em {
+                        font-style: normal;
+                    }
+                }
+                button {
+                    width: 76px;
+                    margin-bottom: 30px;
+                }
+            }
+        }
+    }
+}
+
+.powerBox {
+    p {
+        font-weight: bold;
+    }
+    &>div {
+        margin-bottom: 10px;
+        &>div>span {
+            display: inline-block;
+        }
+    }
+}
+
+// power-set
+.func-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.seach-group {
+    max-width: 827px;
+    .form-group {
+        .input-group {
+            margin-right: 20px;
+            &.role-name {
+                margin-right: 10px;
+                .input-group-addon {
+                    padding: 6px 0;
+                }
+            }
+        }
+        .input-group-addon {
+            width: 70px;
+            background-color: #fafafa;
+            border-radius: 0;
+        }
+        .dropdown-rolename {
+            padding: 6px 20px;
+            border-radius: 0;
+        }
+        .seach-input {
+            width: 400px;
+            border-radius: 0;
+        }
+    }
+}
+
+.power_table {
+    .table {
+        border: 1px solid #e6e9ed;
+        border-bottom: none;
+        tbody,
+        thead {
+            display: inherit;
+            tr {
+                td.index,
+                th.index {
+                    width: 6%;
+                }
+                td.action {
+                    a {
+                        cursor: pointer;
+                    }
+                    .del {
+                        color: #e53935;
+                    }
+                    .edit {
+                        color: #5a738e;
+                    }
+                }
+                td,
+                th {
+                    border-right: 1px solid #e6e9ed;
+                    &:last-child {
+                        border-right: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.power_table,
+.role_table_left {
+    font-size: 13px;
+    .table {
+        thead>tr>th {
+            border-bottom: 1px solid #e6e9ed;
+        }
+        tbody{
+            margin-top: -1px;
+        }
+    }
+}
+
+.input-group-addon {
+    background-color: #fafafa;
+    position: relative;
+    @include required(22px);
+}
+
+.seach-group {
+    .input-group-addon::before {
+        content: none;
+    }
+}
+
+.selected-role {
+    padding: 30px 10px;
+    border-top: 1px solid #e6e9ed;
+    border-bottom: 1px solid #e6e9ed;
+    margin: 30px 0;
+    p {
+        margin-bottom: 20px;
+        padding-left: 10px;
+        position: relative;
+        @include required();
+    }
+}
+
+table thead,
+tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    td,
+    th {
+        text-align: center;
+    }
+}
+
+.sweet-alert .sa-icon.sa-success::after, .sweet-alert .sa-icon.sa-success::before{
+    height: 114px;
+}

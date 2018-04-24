@@ -1,0 +1,57 @@
+.crm-membercard
+  display table
+  width 100%
+  height 100%
+
+  & > .inner
+    display table-cell
+    vertical-align middle
+
+    & > footer
+      width 1000px
+      margin 0 auto
+      padding 10px 0
+      text-align right
+
+    .box
+      width 1000px
+      margin 0 auto
+      padding 15px 0
+      border 1px solid #ddd
+
+      .left
+      .right
+        display inline-block
+        padding 20px
+        width 50%
+        box-sizing: border-box
+        vertical-align top
+
+        header
+          font-weight bold
+          margin-bottom 12px
+
+        table
+          width 100%
+          border-collapse collapse
+
+          td
+            padding 8px 5px
+            border 1px solid #ddd
+
+            .crm-dpl
+              border none
+
+            input
+            textarea
+              padding 0
+              outline none
+              border none
+              resize none
+              box-shadow: none
+
+            &:nth-of-type(2n + 1)
+              text-align center
+              background-color #fafafa
+      .left
+        border-right 1px dashed #ddd

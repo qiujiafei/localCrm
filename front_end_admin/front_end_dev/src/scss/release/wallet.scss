@@ -1,0 +1,196 @@
+.wallet-container {
+    color: #444;
+    /* title */
+    .wallet-title {
+        background: #fff;
+        line-height: 60px;
+        margin: 20px 0;
+        padding: 0 30px;
+        font-size: 18px;
+        color: #666;
+        position: relative;
+        &:before {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            content: '';
+            margin-top: -10px;
+            background: #66aaff;
+            height: 20px;
+            width: 2px;
+        }
+    }
+    /* content */
+    .wallet-content {
+        background: #fff;
+    }
+    /* filter */
+    .filter {
+        a {
+            text-decoration: none;
+            margin: 0 8px;
+        }
+        .choice {
+            &.actived {
+                color: #66aaff;
+            }
+        }
+        .toggle_month {
+            &.actived {
+                ~.month {
+                    display: inline;
+                }
+            }
+        }
+        .month {
+            display: none;
+        }
+        >.btn-link {
+            margin-top: 18px;
+            color: #66aaff;
+            &:before {
+                content: '高级筛选';
+            }
+        }
+        .filter-label {
+            margin: 14px 0 0 14px;
+            line-height: 34px;
+            min-width: 72px;
+            text-align: right;
+            display: inline-block;
+        }
+        .cnt {
+            display: inline-block;
+            width: 80%;
+            &:before {
+                line-height: 34px;
+                content: '|';
+                opacity: 0;
+            }
+        }
+        .form-group {
+            margin-bottom: 0;
+        }
+        .form-control {
+            border-radius: 0;
+            box-shadow: none;
+        }
+        .btn-primary {
+            border-color: #66aaff;
+            background: #66aaff;
+            min-width: 60px;
+        }
+    }
+    /* basic */
+    /* .filter-basic{} */
+    .date-picker-box {
+        display: inline-block;
+        border: 1px solid #ddd;
+        padding-right: 8px;
+        margin: 0 15px;
+        .form-control {
+            display: inline-block;
+            max-width: 108px;
+            border: 0px;
+        }
+        i {
+            color: #ccc;
+        }
+    }
+    /* advanced */
+    .filter-advanced {
+        &.collapsing,
+        &.in,
+            {
+            +.btn-link>i {
+                transform: rotate(-180deg);
+            }
+            +.btn-link:before {
+                content: '基本筛选';
+            }
+        }
+    }
+    .btn-block {
+        width: auto;
+    }
+    /* table */
+    .table-box {
+        min-height: 440px;
+    }
+    .table {
+        border-bottom: 1px solid #ddd;
+        th,
+        td {
+            line-height: 60px;
+            padding: 0 20px;
+        }
+        th {
+            background: #f5f5f5;
+            border-bottom: 0;
+        }
+        td:last-child {
+            border-bottom: 1px;
+        }
+        .btn-link {
+            color: #66aaff;
+            text-decoration: none;
+        }
+    }
+    /* pagination */
+    .pagination-box {
+        padding-right: 20px;
+        li.disabled a {
+            background: #f5f5f5;
+        }
+        .high-lighted {
+            color: #66aaff;
+        }
+    }
+    .pagination>.active>a,
+    .pagination>.active>a:hover,
+    .pagination>.active>a:focus {
+        background-color: #66aaff;
+        border-color: #66aaff;
+    }
+}
+.apx-modal-wallet{
+    .modal-dialog {
+        width: 745px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        height: 425px;
+    }
+    .modal-content{
+        border-radius: 0;
+    }
+    .modal-header{
+        background: #f5f5f5;
+        color: #333;
+        border-bottom: 0;
+    }
+    .modal-body{
+        padding: 15px 40px;
+        .title{
+            margin: 26px 0;
+            text-align: center;
+            color: #777;
+            font-size: 14px;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+            i{color: #5abd68; font-size: 16px;}
+        }
+        .table{
+            min-height: 240px;
+            margin: 15px 0;
+            td{
+                line-height: 60px;
+                padding: 0 14px;
+            }
+        }
+    }
+}

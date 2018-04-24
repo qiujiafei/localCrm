@@ -1,0 +1,181 @@
+ // nav tabs
+@mixin nav-tabs-danger() {
+    // nav tabs
+    >.nav-tabs {
+        margin: 30px 0;
+        border-bottom: 3px solid $brand-danger;
+        li {
+            margin-bottom: 0;
+            text-align: center;
+            &.active {
+                a {
+                    border: 0;
+                    background: $brand-danger;
+                    color: #fff;
+                }
+            }
+            a {
+                min-width: 100px;
+                line-height: 1;
+                height: 34px;
+                background: #fce7e6;
+                border: 0;
+                margin-right: 20px;
+            }
+        }
+    }
+}
+
+@mixin nav-tabNew-danger() {
+    // nav tabNew
+    >.nav-tab-new{
+        border-bottom: 3px solid #cd4d44; 
+        li {
+            float: left;
+            &.active {
+                a {
+                    border: 0;
+                    background: #cf4d44;
+                    color: #fff;
+                }
+            }
+            a { 
+                margin-right: 20px;
+                font-size: 14px;            
+                width: 100px;
+                height: 36px;    
+                color: #333;    
+                border-radius: 4px;
+                text-align: center;
+                line-height: 20px;
+                background: #fce7e6;
+                border: 0;
+                
+            }
+        }
+    }
+}
+
+// supply and admin order page
+@mixin supplyAndAdminOrder() {
+    // 查询导航
+    .nav-bar {
+        height: 96px;
+        margin-bottom: 20px;
+        background: linear-gradient(to bottom, #fefefe, #f6f6f6);
+        box-shadow: 0 2px 1px #ccc;
+        border: 1px solid #f6f6f6;
+        padding: 32px 20px;
+        text-align: center;
+        position: relative;
+        .form-group {
+            left: 20px;
+            top: 32px;
+            position: absolute;
+            select {
+                min-width: 130px;
+            }
+        }
+        // search bar
+        .input-group {
+            display: none;
+            border-radius: 17px;
+            background: #fff;
+            &.in {
+                display: inline-block;
+            }
+            input {
+                border-radius: 17px;
+                width: 360px;
+                background: transparent;
+            }
+            .input-group-btn {
+                line-height: 30px;
+            }
+            .btn {
+                position: relative;
+                z-index: 2;
+                margin-left: -40px;
+                background: transparent;
+            }
+            &.query_time {
+                background: transparent;
+                margin-left: 32px;
+                label {
+                    float: left;
+                    line-height: 30px;
+                }
+                input {
+                    border-radius: 2px;
+                    width: 140px;
+                    padding-right: 40px;
+                    background: transparent;
+                }
+            }
+        }
+        .btn-danger {
+            position: absolute;
+            right: 20px;
+            top: 32px;
+            min-width: 100px;
+        }
+    }
+    // panel
+    .panel-order {
+        padding: 0;
+        box-shadow: 0 2px 1px #ccc;
+        border: 0;
+        .panel-heading {
+            background: #cf4d45;
+            color: #fff;
+            cursor: pointer;
+            transition: background .2s linear, color .2s linear;
+            &.collapsed {
+                background: #dadada;
+                color: #4d4d4d;
+            }
+        }
+        .panel-title {
+            font-size: 15px;
+        }
+        .panel-body {
+            border: 1px solid $btn-default-border;
+            border-top: 0;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            line-height: 2.5;
+            padding: 0;
+            .bg-danger {
+                margin: 0;
+                padding: 12px 0;
+                background: #fce7e6;
+            }
+            >.list-unstyled {
+                padding: 0 15px;
+                li {
+                    padding: 12px 0;
+                    border-bottom: 1px dashed $btn-default-border;
+                }
+                img {
+                    width: 85px;
+                    height: 85px;
+                }
+                [class^='col-xs'] {
+                    padding-left: 0;
+                    display: table-cell;
+                    vertical-align: middle;
+                    float: none;
+                }
+            }
+        }
+        .col-xs-12 {
+            >a {
+                margin-bottom: 6px;
+            }
+        }
+        .btn-danger {
+            min-width: 100px;
+            margin: 20px 15px 20px 0;
+        }
+    }
+}

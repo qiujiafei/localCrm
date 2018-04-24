@@ -1,0 +1,93 @@
+.crm-nav-bar
+  position relative
+  width 100%
+  height 60px
+  line-height 60px
+  background-color #2f3b43
+  font-family microsoft yahei
+
+  & > .title
+    display inline-block
+    padding-left 15px
+    color #fff
+    font-size 18px
+
+    & > .logo
+      display inline-block
+      width 150px
+      height 38px
+      background-image embedurl('./logo.png')
+      background-size cover
+      background-repeat no-repeat
+      background-position center
+      vertical-align middle
+
+  & > .menu
+    position absolute
+    top 0
+    right 15px
+    background-color transparent
+    border none
+
+    & > .list
+      display inline-block
+
+      & > ul
+        height 100%
+        margin 0
+        padding 0
+        list-style none
+
+        & > li
+          position relative
+          display inline-block
+          cursor pointer
+          border-radius 4px
+
+          &:hover
+            & > a
+              background-color #444f56
+            & > ul
+              display block
+
+          & > a
+            display inline
+            padding 10px 20px
+            color #fff
+            border-radius 4px
+
+          & > ul
+            position absolute
+            top 60px
+            z-index 11
+            display none
+            margin 0
+            padding 0
+            width 160px
+            line-height normal
+            list-style none
+            background-color #fff
+            border 1px solid #ccc
+            border-radius 4px
+            font-size 14px
+
+            & > li
+              padding-top 8px
+              padding-bottom 8px
+              padding-left 10px
+
+              &:hover
+                background-color #ccc
+
+    & > .user
+      display inline-block
+      margin-left 40px
+      color #fff
+      span
+        display inline-block
+        margin-left 10px
+        a
+          color #fff
+          text-decoration none
+      i
+        color #fff

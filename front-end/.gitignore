@@ -1,0 +1,7 @@
+.DS_Store
+node_modules
+*.log
+.publish
+deploy_key
+deploy_key.pub
+package-lock.json

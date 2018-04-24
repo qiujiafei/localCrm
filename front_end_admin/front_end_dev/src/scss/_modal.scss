@@ -1,0 +1,269 @@
+.modal-sm {
+    width: 460px !important;
+}
+
+@mixin businessModal($height) {
+    border-radius: 10px;
+    .modal-dialog {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+    }
+    .modal-dialog {
+        height: $height;
+    }
+    .modal-content {
+        border-radius: 0;
+    }
+    .modal-header {
+        background: #f5f5f5;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 16px;
+        .close {
+            font-size: 36px;
+            font-weight: 100;
+            width: 24px;
+            height: 24px;
+            color: #bbb;
+            opacity: 1;
+            outline: 0;
+            position: relative;
+            right: 5px;
+            span {
+                display: block;
+                height: 24px;
+                line-height: 20px;
+                text-align: center;
+            }
+        }
+    }
+    .modal-footer {
+        border: none;
+        text-align: center;
+    }
+}
+
+// 图片弹窗
+.hb-modal-img {
+    @include businessModal(340px);
+    .modal-dialog {
+        width: 436px;
+    }
+    .modal-body {
+        text-align: center;
+        .img {
+            padding: 30px 0;
+        }
+        img {
+            width: 250px;
+            height: 150px;
+        }
+    }
+}
+
+// 审核结果弹窗
+.hb-modal-audit {
+    @include businessModal(340px);
+    .modal-dialog {
+        width: 436px;
+    }
+    .body-content {
+        padding: 0 20px;
+        .check-box {
+            padding-left: 40px;
+            cursor: pointer;
+            position: relative;
+            &::before {
+                content: '';
+                width: 18px;
+                height: 18px;
+                border: 1px solid #ccc;
+                border-radius: 20px;
+                position: absolute;
+                left: 16px;
+                top: 0;
+            }
+            &.active {
+                border-color: #2284ff;
+                &::before {
+                    background: url('/images/hummingbird/icon_duanxuan1.png') no-repeat center;
+                }
+            }
+        }
+        .content-form {
+            p {
+                margin: 10px 0;
+            }
+            textarea {
+                width: 100%;
+                height: 140px;
+                resize: none;
+                border-color: #e5e5e5;
+            }
+        }
+    }
+}
+
+// 技师信息修改
+.hb-modal-edit-info {
+    @include businessModal(530px);
+    .body-content {
+        padding: 0 20px;
+        .form-group {
+            margin: 10px 0;
+            display: block;
+            span {
+                display: inline-block;
+                width: 68px;
+                text-align: right;
+            }
+        }
+        .form-control {
+            width: 180px;
+            height: 32px;
+            border-radius: 0;
+        }
+    }
+    .upload-container {
+        display: flex;
+        padding-left: 68px;
+        .item {
+            flex: auto;
+            position: relative;
+            input[type="file"] {
+                position: absolute;
+                top: 30px;
+                left: 0;
+                width: 100px;
+                height: 80px;
+                opacity: 0;
+                cursor: pointer;
+            }
+        }
+    }
+    .result {
+        margin: 20px 0;
+        .check-box {
+            padding-left: 40px;
+            cursor: pointer;
+            position: relative;
+            &::before {
+                content: '';
+                width: 18px;
+                height: 18px;
+                border: 1px solid #ccc;
+                border-radius: 20px;
+                position: absolute;
+                left: 16px;
+                top: 0;
+            }
+            &.active {
+                border-color: #2284ff;
+                &::before {
+                    background: url('/images/hummingbird/icon_duanxuan1.png') no-repeat center;
+                }
+            }
+        }
+    }
+}
+
+// 订单管理弹窗
+.hb-modal-order-manage {
+    @include businessModal(88vh);
+    .modal-dialog {
+        width: 1570px;
+    }
+    .body-content {
+        padding: 20px;
+        table {
+            width: 100%;
+        }
+        th {
+            font-weight: normal;
+            background-color: #f5f5f5;
+        }
+        td, th {
+            line-height: 60px;
+            text-indent: 20px;
+        }
+        tr {
+            border: 1px solid #e7e7eb;
+        }
+    }
+}
+
+// 派遣技师弹窗
+.hb-modal-allot {
+    @include businessModal(340px);
+    .modal-dialog {
+        width: 436px;
+    }
+    .body-content {
+        padding: 0 20px;
+        >div {
+            margin: 10px 0;
+        }
+        label {
+            font-weight: normal;
+            width: 88px;
+            text-align: right;
+        }
+    }
+}
+
+// 技师配置
+.hb-modal-config {
+    @include businessModal(502px);
+    .modal-dialog {
+        width: 665px;
+    }
+    .body-content {
+        padding: 0 20px;
+        >div {
+            margin: 10px 0;
+        }
+        label {
+            font-weight: normal;
+            width: 88px;
+            text-align: right;
+        }
+        .check-box {
+            padding-left: 26px;
+            cursor: pointer;
+            position: relative;
+            &::before {
+                content: '';
+                width: 18px;
+                height: 18px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                position: absolute;
+                left: 2px;
+                top: 0;
+            }
+            &.active {
+                border-color: #2284ff;
+                &::before {
+                    background: url('/images/hummingbird/icon_duanxuan1.png') no-repeat center;
+                }
+            }
+        }
+        .check-container {
+            padding-left: 84px;
+            display: flex;
+            flex-wrap: wrap;
+            select {
+                width: 90px;
+            }
+            >div {
+                box-sizing: border-box;
+                padding: 8px;
+            }
+        }
+    }
+}
+

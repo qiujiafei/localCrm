@@ -1,0 +1,31 @@
+.business-audit {
+    min-width: 1190px;
+    overflow: auto;
+    .nav-tabs {
+        border-bottom: none;
+        li {
+            a {
+                border: none;
+                padding: 15px 30px;
+                font-size: 14px;
+                &:hover {
+                    background-color: #fff;
+                }
+            }
+            &.active {
+                border-bottom: 4px solid #66aaff;
+                a {
+                    border: none;
+                    color: #66aaff;
+                    &:hover {
+                        border: none;
+                    }
+                }
+            }
+        }
+    }
+    .tab-content {
+        border-top: 20px solid #e9eef2;
+    }
+    
+}

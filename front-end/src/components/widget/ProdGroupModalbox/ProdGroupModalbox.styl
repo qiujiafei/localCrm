@@ -1,0 +1,53 @@
+.prod-group-modalbox
+  position absolute
+  top 70px
+  width 100%
+  height calc(100% - 144px)
+
+  .cell
+    display inline-block
+    width calc(100% / 3)
+    height 100%
+    vertical-align top
+
+    & > .inner
+      position relative
+      width 90%
+      height 100%
+      margin 0 auto
+      border 1px solid #ddd
+
+      .crm-indicator
+        position absolute
+
+      header
+        padding 6px 0
+        border-bottom 1px solid #ddd
+        text-align center
+
+      ul
+        height calc(100% - 31px)
+        margin 0
+        padding 0
+        list-style none
+        overflow auto
+
+        li
+          padding 5px 0
+          border-bottom 1px dashed #ddd
+          cursor pointer
+
+          &.on
+            background-color #eee
+
+          .fa
+            display inline-block
+            margin 0 5px
+            color #2e6da4
+            font-size 20px
+
+          span
+            display inline-block
+            width calc(100% - 32px)
+            text-overflow ellipsis
+            overflow hidden
